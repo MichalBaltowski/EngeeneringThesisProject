@@ -1,0 +1,397 @@
+New record added: 03.02.2022 15:15:00
+Czas trwania ewolucji 711 sekund
+Do mety dotarły 1 samochody
+Generacja 14
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 15:32:45
+Czas trwania ewolucji 1055 sekund
+Do mety dotarły 1 samochody
+Generacja 20
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 15:49:15
+Czas trwania ewolucji 751 sekund
+Do mety dotarły 1 samochody
+Generacja 14
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 15:55:43
+Czas trwania ewolucji 310 sekund
+Do mety dotarły 1 samochody
+Generacja 6
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 16:05:10
+Czas trwania ewolucji 426 sekund
+Do mety dotarły 3 samochody
+Generacja 9
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 16:23:22
+Czas trwania ewolucji 734 sekund
+Do mety dotarły 1 samochody
+Generacja 14
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 16:41:58
+Czas trwania ewolucji 900 sekund
+Do mety dotarły 2 samochody
+Generacja 16
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 16:50:52
+Czas trwania ewolucji 515 sekund
+Do mety dotarły 1 samochody
+Generacja 10
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 16:56:23
+Czas trwania ewolucji 326 sekund
+Do mety dotarły 1 samochody
+Generacja 6
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 17:02:21
+Czas trwania ewolucji 322 sekund
+Do mety dotarły 1 samochody
+Generacja 7
+Wielkość populacji 130
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 17:11:19
+Czas trwania ewolucji 466 sekund
+Do mety dotarły 1 samochody
+Generacja 9
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 17:19:51
+Czas trwania ewolucji 508 sekund
+Do mety dotarły 2 samochody
+Generacja 11
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 17:27:25
+Czas trwania ewolucji 448 sekund
+Do mety dotarły 1 samochody
+Generacja 10
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 17:34:57
+Czas trwania ewolucji 384 sekund
+Do mety dotarły 1 samochody
+Generacja 8
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 17:47:01
+Czas trwania ewolucji 428 sekund
+Do mety dotarły 1 samochody
+Generacja 8
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 17:54:57
+Czas trwania ewolucji 471 sekund
+Do mety dotarły 4 samochody
+Generacja 9
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 18:06:23
+Czas trwania ewolucji 663 sekund
+Do mety dotarły 1 samochody
+Generacja 12
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 18:19:54
+Czas trwania ewolucji 619 sekund
+Do mety dotarły 2 samochody
+Generacja 12
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 18:31:31
+Czas trwania ewolucji 466 sekund
+Do mety dotarły 1 samochody
+Generacja 9
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 18:41:21
+Czas trwania ewolucji 499 sekund
+Do mety dotarły 1 samochody
+Generacja 10
+Wielkość populacji 160
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 18:53:58
+Czas trwania ewolucji 735 sekund
+Do mety dotarły 1 samochody
+Generacja 14
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 19:01:58
+Czas trwania ewolucji 407 sekund
+Do mety dotarły 1 samochody
+Generacja 9
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 19:13:17
+Czas trwania ewolucji 648 sekund
+Do mety dotarły 1 samochody
+Generacja 13
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 19:27:21
+Czas trwania ewolucji 712 sekund
+Do mety dotarły 1 samochody
+Generacja 15
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 19:35:02
+Czas trwania ewolucji 457 sekund
+Do mety dotarły 1 samochody
+Generacja 11
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 19:46:32
+Czas trwania ewolucji 686 sekund
+Do mety dotarły 1 samochody
+Generacja 15
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 19:55:50
+Czas trwania ewolucji 331 sekund
+Do mety dotarły 2 samochody
+Generacja 8
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 20:15:59
+Czas trwania ewolucji 953 sekund
+Do mety dotarły 1 samochody
+Generacja 20
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 20:34:51
+Czas trwania ewolucji 820 sekund
+Do mety dotarły 2 samochody
+Generacja 16
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 20:54:15
+Czas trwania ewolucji 943 sekund
+Do mety dotarły 1 samochody
+Generacja 18
+Wielkość populacji 70
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 21:27:58
+Czas trwania ewolucji 737 sekund
+Do mety dotarły 1 samochody
+Generacja 16
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 21:40:16
+Czas trwania ewolucji 669 sekund
+Do mety dotarły 1 samochody
+Generacja 13
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 22:03:07
+Czas trwania ewolucji 1260 sekund
+Do mety dotarły 1 samochody
+Generacja 26
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 22:23:11
+Czas trwania ewolucji 1032 sekund
+Do mety dotarły 1 samochody
+Generacja 20
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 22:43:50
+Czas trwania ewolucji 1185 sekund
+Do mety dotarły 2 samochody
+Generacja 24
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 22:55:02
+Czas trwania ewolucji 661 sekund
+Do mety dotarły 1 samochody
+Generacja 14
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 23:25:41
+Czas trwania ewolucji 1836 sekund
+Do mety dotarły 3 samochody
+Generacja 36
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 23:35:55
+Czas trwania ewolucji 491 sekund
+Do mety dotarły 1 samochody
+Generacja 14
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 03.02.2022 23:52:11
+Czas trwania ewolucji 751 sekund
+Do mety dotarły 1 samochody
+Generacja 17
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
+
+==============================
+
+New record added: 04.02.2022 00:09:28
+Czas trwania ewolucji 812 sekund
+Do mety dotarły 1 samochody
+Generacja 17
+Wielkość populacji 40
+Mutation chance 0,35
+Mutation strength 0,5
