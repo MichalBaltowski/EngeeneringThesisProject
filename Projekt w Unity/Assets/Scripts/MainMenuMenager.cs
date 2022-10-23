@@ -5,19 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuMenager : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
 
     public void startSimulation() {
         SceneManager.LoadScene("SimulationScene");
+    }
+
+    public void setSimulationParameters() {
+
+    }
+
+    public void terminateProgram() {
+        Application.Quit();
     }
 }
