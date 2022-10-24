@@ -587,7 +587,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 777777720}
         m_TargetAssemblyTypeName: MainMenuMenager, Assembly-CSharp
-        m_MethodName: setSimulationParameters
+        m_MethodName: setParameters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
