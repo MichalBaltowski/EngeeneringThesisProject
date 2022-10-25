@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuMenager : MonoBehaviour
 {
     void Start() {
-      
+        setDefaultParameters();
     }
 
     private void Update() {
@@ -21,5 +21,13 @@ public class MainMenuMenager : MonoBehaviour
 
     public void terminateProgram() {
         Application.Quit();
+    }
+
+    private void setDefaultParameters() {
+        if (!ParametersDto.isParamsInitialized()) {
+            ParametersDto.setPopulationSize(90);
+            ParametersDto.setMutationChance(0.5f);
+            ParametersDto.setMutationStrength(0.2f);
+        }
     }
 }

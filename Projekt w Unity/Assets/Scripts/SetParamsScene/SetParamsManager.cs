@@ -4,24 +4,48 @@ using UnityEngine.UI;
 
 public class SetParamsManager : MonoBehaviour
 {
-    float mutationchance;
-    private float mutationStrength;
     private Slider mutationChanceSlider;
     private Slider mutationStrengthSlider;
+    private Slider populationSizeSlider;
+
     private Text mutationChanceText;
+    private Text mutationStrengthText;
+    private Text populationSizeText;
 
     void Start() {
-        mutationChanceSlider = GameObject.Find("MutationChanceSlider").GetComponent<Slider>();
-        mutationChanceText = GameObject.Find("MutationChanceText").GetComponent<Text>();
-        mutationChanceText.text = "0.10";
+        initializePopulationSizeInputs();
+        initializeMutationChanceInputs();
+        initializeMutationStrengthInputs();
     }
 
-    private void Update() {
-        mutationchance = mutationChanceSlider.value;
-        mutationStrength = mutationStrengthSlider.value; 
+    void Update() {
+        ParametersDto.setPopulationSize((int)populationSizeSlider.value);
+        ParametersDto.setMutationChance(mutationChanceSlider.value);
+        ParametersDto.setMutationStrength(mutationStrengthSlider.value);
     }
 
     public void returnToMainMenu() {
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    private void initializePopulationSizeInputs() {
+        populationSizeSlider = GameObject.Find("PopulationSizeSlider").GetComponent<Slider>();
+        populationSizeText = GameObject.Find("PopulationSizeText").GetComponent<Text>();
+        populationSizeSlider.normalizedValue = ParametersDto.getPopulationSize();
+        populationSizeText.text = ParametersDto.getPopulationSize().ToString();
+    }
+
+    private void initializeMutationChanceInputs() {
+        mutationChanceSlider = GameObject.Find("MutationChanceSlider").GetComponent<Slider>();
+        mutationChanceText = GameObject.Find("MutationChanceText").GetComponent<Text>();
+        mutationChanceSlider.normalizedValue = ParametersDto.getMutationChance();
+        mutationChanceText.text = ParametersDto.getMutationChance().ToString();
+    }
+
+    private void initializeMutationStrengthInputs() {
+        mutationStrengthSlider = GameObject.Find("MutationStrengthSlider").GetComponent<Slider>();
+        mutationStrengthText = GameObject.Find("MutationStrengthText").GetComponent<Text>();
+        mutationStrengthSlider.normalizedValue = ParametersDto.getMutationStrength();
+        mutationStrengthText.text = ParametersDto.getMutationStrength().ToString();
     }
 }

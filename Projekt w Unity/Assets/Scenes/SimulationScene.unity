@@ -380,7 +380,7 @@ MonoBehaviour:
   car: {fileID: 5842286086751844939, guid: 0a58a3e956c014143a70b4844e15ec69, type: 3}
   populationSize: 20
   mutationChance: 0.35
-  mutationStrength: 0.5
+  mutationStrength: 0.482
 --- !u!1 &174837258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4091402610533590339, guid: 3361a9ef219d9d74b9386993ece9d78f,
