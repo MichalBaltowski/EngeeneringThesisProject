@@ -3,6 +3,8 @@ static public class ParametersDto
     private static int sizePopulation;
     private static float mutationChance;
     private static float mutationStrength;
+    private static int generationNumber;
+    private static int aliveUnitsNumber;
 
     public static void setPopulationSize(int newValue) {
         if(newValue > 1 && newValue < 300) {
@@ -22,6 +24,22 @@ static public class ParametersDto
         }
     }
 
+    public static void setGenerationNumber(int newValue) {
+        if(newValue > 1) {
+            generationNumber = newValue;
+        }
+    }
+
+    public static void setAliveUnitsNumber(int newValue) {
+        if(newValue >= 0 ) {
+            aliveUnitsNumber = newValue;
+        }
+    }
+
+    public static void incrementGenerationNumber() {
+        generationNumber++;
+    }
+
     public static int getPopulationSize() {
         return sizePopulation;
     }
@@ -36,5 +54,13 @@ static public class ParametersDto
 
     public static bool isParamsInitialized() {
         return sizePopulation != 0;
+    }
+
+    public static int getGenerationNumber() {
+        return generationNumber;
+    }
+
+    public static int getAliveUnitsNumber() {
+        return aliveUnitsNumber;
     }
 }

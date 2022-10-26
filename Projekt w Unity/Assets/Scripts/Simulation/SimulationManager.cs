@@ -2,23 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
-public class Manager : MonoBehaviour {
+public class SimulationManager : MonoBehaviour {
 
+    private Gui gui;
     private GeneticAlgorithm geneticAlgorithm;
-    private TextMeshProUGUI gui;
     private GameObject spawner;
     private CameraScript cameraScript;
-    private int generation = 0;
     public List<Car> carPopulationList;
     public Car car;
-    [Header("Population size")]
-    public int populationSize;
-    [Range(0f, 1f)]
-    public float mutationChance = 0.05f;
-    [Range(0f, 1f)]
-    public float mutationStrength = 0.5f;
-   
+  
     void Start() {
         setSpawner();
         initGeneticAlgorithm();
@@ -30,11 +24,12 @@ public class Manager : MonoBehaviour {
     }
     private void initGeneticAlgorithm() {
         geneticAlgorithm = new GeneticAlgorithm();
-        geneticAlgorithm.setMutationChance(mutationChance);
-        geneticAlgorithm.setMutationStrength(mutationStrength);
+        geneticAlgorithm.setMutationChance(ParametersDto.getMutationChance());
+        geneticAlgorithm.setMutationStrength(ParametersDto.getMutationStrength());
     }
     public void initGUI() {
-        gui = GameObject.Find("Text").GetComponent<TextMeshProUGUI>();
+        gui = new Gui();
+        gui.initializeGui();
     }
     public void initPupulation() {
         if (carPopulationList.Count == 0) {
@@ -44,26 +39,21 @@ public class Manager : MonoBehaviour {
         }
     }
    
-    //inicjalizuje nowa populacje
     public void initializeNewPopulation() {
         carPopulationList = new List<Car>();
         initializeCars(carPopulationList);
-        generation++;
+        ParametersDto.incrementGenerationNumber();
     }
 
-    //inicjalizuje następną generacje
-    //tworzy nowe pojazdy i przekopiowuje sieci ze starych aut do nowych
-    //niszczy stare obiekty i zapisuje nowe auta do domyslnej listy
     public void initializeNextGeneration() {
         List<Car> nextGenCarList = new List<Car>();
         initializeCars(nextGenCarList);
         geneticAlgorithm.createNextPopulation(carPopulationList, nextGenCarList);
         destroyCarsFromPreviousGeneration();
         saveNewGenerationToDefaultList(nextGenCarList);
-        generation++;
+        ParametersDto.incrementGenerationNumber();
     }
 
-    //Usunięcie obiektów i wyczyszczenie listy aby fizycznie samochody zniknęły z trasy
     private void destroyCarsFromPreviousGeneration() {
         for (int i = 0; i < carPopulationList.Count; i++) {
             GameObject.Destroy(carPopulationList[i].gameObject);
@@ -86,21 +76,30 @@ public class Manager : MonoBehaviour {
 
     void Update() {
         if (ifPopulationExists()) {
-            displayStatsOnGUI();
+            gui.updateGui();
         } else {
             endSimulationIfCarsGetsToMeta();
             initPupulation();
         }
     }
 
-    //zwraca true jesli wszystkie osobniki posiadają collided = true
-    public bool ifPopulationExists() {
-        foreach (Car car in carPopulationList) {
-            if (!car.collided) {
-                return true;
-            }
+    private bool ifPopulationExists() {
+        if(countAliveUnits() > 0) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
+    }
+    
+    private int countAliveUnits() {
+        int units = 0;
+        carPopulationList.ForEach(car => {
+            if (!car.collided) {
+                units++;
+            }
+        });
+        ParametersDto.setAliveUnitsNumber(units);
+        return units;
     }
 
     private void endSimulationIfCarsGetsToMeta() {
@@ -121,11 +120,11 @@ public class Manager : MonoBehaviour {
 
     private DataForTxt prepareDataToSave(int howManyCarsEndedRace) {
         return DataForTxtBuilder.get()
-            .withGenerationNumber(generation)
+            .withGenerationNumber(ParametersDto.getGenerationNumber())
             .withNumberOfFinishingCar(howManyCarsEndedRace)
-            .withPopulationSize(populationSize)
-            .withMutationChance(mutationChance)
-            .withMutationStrength(mutationStrength)
+            .withPopulationSize(ParametersDto.getPopulationSize())
+            .withMutationChance(ParametersDto.getMutationChance())
+            .withMutationStrength(ParametersDto.getMutationStrength())
             .withTimeInSecondsSinceStartup((int)Time.realtimeSinceStartup)
             .createNewDataForTxt();
     }
@@ -133,7 +132,7 @@ public class Manager : MonoBehaviour {
     //inicjalizuje auta nadajac im imie. 
     //Parametr initWithNetwork decyduje czy nowy pojazd ma posiadac utworzony nowy obiekt sieci neuronowej
     public void initializeCars(List<Car> carList) {
-        for (int i = 0; i < populationSize; i++) {
+        for (int i = 0; i < ParametersDto.getPopulationSize() ; i++) {
             Car clone = spawnNewCar();
             clone.name = "CAR" + i;
             clone.network = initNeuronalNetwork();
@@ -151,29 +150,4 @@ public class Manager : MonoBehaviour {
     public static NeuralNetwork initNeuronalNetwork() {
         return new NeuralNetwork(new int[] { 5, 3, 2 });
     }
-
-    public void displayStatsOnGUI() {
-        var bestCarFitnessValue = geneticAlgorithm.getBestCar(carPopulationList).getFitnessValue();
-
-        gui.text = "Generacja: " + generation;
-        gui.text += "\nBest Car Fitness: " + bestCarFitnessValue;
-    }
-
-    private void updateBestCar() {
-       // cameraScript.updateBestCar(geneticAlgorithm.getBestCar(carPopulationList));
-    }
-
-    //zmienia kolor pojazu w zaleznosci od stanu.
-    public void changeCarsColour() {
-        /*   bestCar.GetComponent<Renderer>().material.color = Color.green;
-           foreach (Car car in carList) {
-               if (car.collided) {
-                   car.GetComponent<Renderer>().material.color = Color.clear;
-               } else {
-                   if (car != bestCar)
-                       car.GetComponent<Renderer>().material.color = Color.blue;
-               }
-           }*/
-    }
-
 }

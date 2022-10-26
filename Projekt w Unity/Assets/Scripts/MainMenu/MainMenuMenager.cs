@@ -7,10 +7,6 @@ public class MainMenuMenager : MonoBehaviour
         setDefaultParameters();
     }
 
-    private void Update() {
-       
-    }
-
     public void startSimulation() {
         SceneManager.LoadScene("SimulationScene");
     }
