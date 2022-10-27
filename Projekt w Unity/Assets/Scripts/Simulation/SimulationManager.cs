@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 public class SimulationManager : MonoBehaviour {
 
@@ -12,7 +9,7 @@ public class SimulationManager : MonoBehaviour {
     private CameraScript cameraScript;
     public List<Car> carPopulationList;
     public Car car;
-  
+
     void Start() {
         setSpawner();
         initGeneticAlgorithm();
@@ -38,7 +35,7 @@ public class SimulationManager : MonoBehaviour {
             initializeNextGeneration();
         }
     }
-   
+
     public void initializeNewPopulation() {
         carPopulationList = new List<Car>();
         initializeCars(carPopulationList);
@@ -84,13 +81,13 @@ public class SimulationManager : MonoBehaviour {
     }
 
     private bool ifPopulationExists() {
-        if(countAliveUnits() > 0) {
+        if (countAliveUnits() > 0) {
             return true;
         } else {
             return false;
         }
     }
-    
+
     private int countAliveUnits() {
         int units = 0;
         carPopulationList.ForEach(car => {
@@ -132,7 +129,7 @@ public class SimulationManager : MonoBehaviour {
     //inicjalizuje auta nadajac im imie. 
     //Parametr initWithNetwork decyduje czy nowy pojazd ma posiadac utworzony nowy obiekt sieci neuronowej
     public void initializeCars(List<Car> carList) {
-        for (int i = 0; i < ParametersDto.getPopulationSize() ; i++) {
+        for (int i = 0; i < ParametersDto.getPopulationSize(); i++) {
             Car clone = spawnNewCar();
             clone.name = "CAR" + i;
             clone.network = initNeuronalNetwork();

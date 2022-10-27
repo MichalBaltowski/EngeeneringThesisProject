@@ -15,6 +15,10 @@ public class MainMenuMenager : MonoBehaviour
         SceneManager.LoadScene("SetParametersScene");
     }
 
+    public void openRanking() {
+        SceneManager.LoadScene("RankingScene");
+    }
+
     public void terminateProgram() {
         Application.Quit();
     }

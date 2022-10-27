@@ -1,0 +1,11 @@
+New file created: 27.10.2022 15:59:54
+Author: Michał Bałtowski
+Czas trwania ewolucji 240 sekund
+Do mety dotarły 1 samochody
+Generacja 21
+Wielkość populacji 90
+Mutation chance 0,5
+Mutation strength 0,2
+
+==============================
+

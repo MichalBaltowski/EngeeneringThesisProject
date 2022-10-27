@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PopulationSizeScript : MonoBehaviour
-{
+public class PopulationSizeScript : MonoBehaviour {
     [SerializeField] Slider populationSizeSlider;
     [SerializeField] Text populationSizeText;
 
