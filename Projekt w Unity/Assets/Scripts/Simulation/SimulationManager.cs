@@ -3,106 +3,50 @@ using UnityEngine;
 
 public class SimulationManager : MonoBehaviour {
 
-    private Gui gui;
-    private GeneticAlgorithm geneticAlgorithm;
+    private PopulationManager populationManager;
+    private GuiManager gui;
     private GameObject spawner;
     private CameraScript cameraScript;
-    public List<Car> carPopulationList;
-    public Car car;
+    public List<Car> carsPopulationList;
 
     void Start() {
         setSpawner();
-        initGeneticAlgorithm();
-        initGUI();
+        initGui();
         initPupulation();
+        spawnCars();
     }
-    public void setSpawner() {
+
+    private void setSpawner() {
         spawner = GameObject.FindGameObjectWithTag("Spawn");
     }
-    private void initGeneticAlgorithm() {
-        geneticAlgorithm = new GeneticAlgorithm();
-        geneticAlgorithm.setMutationChance(ParametersDto.getMutationChance());
-        geneticAlgorithm.setMutationStrength(ParametersDto.getMutationStrength());
-    }
-    public void initGUI() {
-        gui = new Gui();
+
+    private void initGui() {
+        gui = new GuiManager();
         gui.initializeGui();
     }
-    public void initPupulation() {
-        if (carPopulationList.Count == 0) {
-            initializeNewPopulation();
-        } else {
-            initializeNextGeneration();
-        }
+
+    private void initPupulation() {
+        populationManager = new PopulationManager();
+        carsPopulationList = populationManager.initializeNewPopulation();
     }
 
-    public void initializeNewPopulation() {
-        carPopulationList = new List<Car>();
-        initializeCars(carPopulationList);
-        ParametersDto.incrementGenerationNumber();
-    }
-
-    public void initializeNextGeneration() {
-        List<Car> nextGenCarList = new List<Car>();
-        initializeCars(nextGenCarList);
-        geneticAlgorithm.createNextPopulation(carPopulationList, nextGenCarList);
-        destroyCarsFromPreviousGeneration();
-        saveNewGenerationToDefaultList(nextGenCarList);
-        ParametersDto.incrementGenerationNumber();
-    }
-
-    private void destroyCarsFromPreviousGeneration() {
-        for (int i = 0; i < carPopulationList.Count; i++) {
-            GameObject.Destroy(carPopulationList[i].gameObject);
-        }
-        carPopulationList.Clear();
-    }
-
-    private void saveNewGenerationToDefaultList(List<Car> newGenerationCarList) {
-        for (int i = 0; i < newGenerationCarList.Count; i++) {
-            carPopulationList.Add(newGenerationCarList[i]);
-        }
-        newGenerationCarList.Clear();
-    }
-
-    private void initCameraMovement() {
-        var cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
-        cameraScript = cameraObject.GetComponent<CameraScript>();
-        cameraScript.setBestCar(carPopulationList[0]);
+    private void spawnCars() {
+       
     }
 
     void Update() {
-        if (ifPopulationExists()) {
+        if (populationManager.ifPopulationExists()) {
             gui.updateGui();
         } else {
-            endSimulationIfCarsGetsToMeta();
-            initPupulation();
+            endRaceIfCarsGetsToMeta();
+            carsPopulationList = populationManager.initializeNextGeneration(carsPopulationList);
         }
     }
 
-    private bool ifPopulationExists() {
-        if (countAliveUnits() > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private int countAliveUnits() {
-        int units = 0;
-        carPopulationList.ForEach(car => {
-            if (!car.collided) {
-                units++;
-            }
-        });
-        ParametersDto.setAliveUnitsNumber(units);
-        return units;
-    }
-
-    private void endSimulationIfCarsGetsToMeta() {
+    private void endRaceIfCarsGetsToMeta() {
         bool isSimulationOver = false;
         int howManyCarsEndedSimulation = 0;
-        foreach (Car car in carPopulationList) {
+        foreach (Car car in carsPopulationList) {
             if (car.finishSimulation) {
                 Debug.Log(car + "Skończył wyścig!");
                 isSimulationOver = true;
@@ -124,27 +68,5 @@ public class SimulationManager : MonoBehaviour {
             .withMutationStrength(ParametersDto.getMutationStrength())
             .withTimeInSecondsSinceStartup((int)Time.realtimeSinceStartup)
             .createNewDataForTxt();
-    }
-
-    //inicjalizuje auta nadajac im imie. 
-    //Parametr initWithNetwork decyduje czy nowy pojazd ma posiadac utworzony nowy obiekt sieci neuronowej
-    public void initializeCars(List<Car> carList) {
-        for (int i = 0; i < ParametersDto.getPopulationSize(); i++) {
-            Car clone = spawnNewCar();
-            clone.name = "CAR" + i;
-            clone.network = initNeuronalNetwork();
-            carList.Add(clone);
-        }
-    }
-
-    //fizycznie umieszcza pojazdy w punkcie start
-    private Car spawnNewCar() {
-        return Instantiate(car, spawner.transform.position, Quaternion.Euler(0, 0, 0));
-    }
-
-    //inicjalizuje siec skladajaca sie 
-    //z pięciu neuronow w 1 warstwie, trzech w 2 warstwie i dwóch w 3 warstwie
-    public static NeuralNetwork initNeuronalNetwork() {
-        return new NeuralNetwork(new int[] { 5, 3, 2 });
     }
 }
