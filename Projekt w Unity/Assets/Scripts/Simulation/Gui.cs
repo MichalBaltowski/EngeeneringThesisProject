@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GuiManager {
+public class Gui {
     private Text generationNumberText;
     private Text timeText;
     private Text mutationChanceText;
@@ -17,10 +17,6 @@ public class GuiManager {
     public void initializeGui() {
         initText();
         initSpeedControllers();
-    }
-    public void updateGui() {
-        displayStatsOnGUI();
-        time += Time.deltaTime;
     }
 
     private void initText() {
@@ -50,6 +46,11 @@ public class GuiManager {
         fastestSpeedButton.onClick.AddListener(() => setTimeType(TimeType.FASTEST));
 
         normalSpeedButton.Select();
+    }
+
+    public void updateGui() {
+        displayStatsOnGUI();
+        time += Time.deltaTime;
     }
 
     private void displayStatsOnGUI() {

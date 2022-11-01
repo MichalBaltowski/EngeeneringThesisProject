@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuMenager : MonoBehaviour {
+public class MainMenuMenager : MonoBehaviour
+{
     void Start() {
         setDefaultParameters();
     }
