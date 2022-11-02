@@ -9,3 +9,13 @@ Mutation strength 0,2
 
 ==============================
 
+New record added: 02.11.2022 21:49:56
+Czas trwania ewolucji 64 sekund
+Do mety dotarły 90 samochody
+Generacja 1
+Wielkość populacji 90
+Mutation chance 0,5
+Mutation strength 0,2
+
+==============================
+

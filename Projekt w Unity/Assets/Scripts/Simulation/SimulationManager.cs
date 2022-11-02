@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SimulationManager : MonoBehaviour {
 
@@ -10,7 +11,10 @@ public class SimulationManager : MonoBehaviour {
     public List<Car> carPopulationList;
     public Car car;
 
+    private GameObject popup;
+
     void Start() {
+        popup = GameObject.Find("EndSimulationPopup");
         setSpawner();
         initGeneticAlgorithm();
         initGUI();
@@ -65,12 +69,6 @@ public class SimulationManager : MonoBehaviour {
         newGenerationCarList.Clear();
     }
 
-    private void initCameraMovement() {
-        var cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
-        cameraScript = cameraObject.GetComponent<CameraScript>();
-        cameraScript.setBestCar(carPopulationList[0]);
-    }
-
     void Update() {
         if (ifPopulationExists()) {
             gui.updateGui();
@@ -109,9 +107,14 @@ public class SimulationManager : MonoBehaviour {
                 howManyCarsEndedSimulation++;
             }
         }
-        if (isSimulationOver) {
+        //if (isSimulationOver) {
+            if (true) {
+                popup.active = true;
+
+
             new FileManager().writeScoreToFile(prepareDataToSave(howManyCarsEndedSimulation));
-            UnityEditor.EditorApplication.isPlaying = false;
+
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 
@@ -126,8 +129,6 @@ public class SimulationManager : MonoBehaviour {
             .createNewDataForTxt();
     }
 
-    //inicjalizuje auta nadajac im imie. 
-    //Parametr initWithNetwork decyduje czy nowy pojazd ma posiadac utworzony nowy obiekt sieci neuronowej
     public void initializeCars(List<Car> carList) {
         for (int i = 0; i < ParametersDto.getPopulationSize(); i++) {
             Car clone = spawnNewCar();
@@ -137,7 +138,6 @@ public class SimulationManager : MonoBehaviour {
         }
     }
 
-    //fizycznie umieszcza pojazdy w punkcie start
     private Car spawnNewCar() {
         return Instantiate(car, spawner.transform.position, Quaternion.Euler(0, 0, 0));
     }
@@ -146,5 +146,9 @@ public class SimulationManager : MonoBehaviour {
     //z pięciu neuronow w 1 warstwie, trzech w 2 warstwie i dwóch w 3 warstwie
     public static NeuralNetwork initNeuronalNetwork() {
         return new NeuralNetwork(new int[] { 5, 3, 2 });
+    }
+
+    public void startSimulation() {
+        SceneManager.LoadScene("MainMenuScene");
     }
 }

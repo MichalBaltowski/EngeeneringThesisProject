@@ -152,7 +152,7 @@ MonoBehaviour:
   collided: 0
   finishSimulation: 0
   lifeSpan: 5
-  manualSteering: 0
+  manualSteering: 1
 --- !u!1001 &5842286085005393364
 PrefabInstance:
   m_ObjectHideFlags: 0
