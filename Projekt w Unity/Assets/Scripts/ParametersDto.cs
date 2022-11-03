@@ -5,6 +5,7 @@ static public class ParametersDto
     private static float mutationStrength;
     private static int generationNumber;
     private static int aliveUnitsNumber;
+    private static string duration;
 
     public static void setPopulationSize(int newValue) {
         if(newValue > 1 && newValue < 300) {
@@ -36,6 +37,10 @@ static public class ParametersDto
         }
     }
 
+    public static void setDuration(string newValue) {
+        duration = newValue;
+    }
+
     public static void incrementGenerationNumber() {
         generationNumber++;
     }
@@ -62,5 +67,9 @@ static public class ParametersDto
 
     public static int getAliveUnitsNumber() {
         return aliveUnitsNumber;
+    }
+
+    public static string getDuration() {
+        return duration;
     }
 }

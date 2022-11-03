@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SetParametersScene.unity
     guid: cc2bb4616cb67234a82f1be1d0b8288b
+  - enabled: 1
+    path: Assets/Scenes/EndSimulationScene.unity
+    guid: 45731c57fdc856a4ebbf2151c9344c8b
+  - enabled: 1
+    path: Assets/Scenes/RankingScene.unity
+    guid: 28807aac020b8f4458c3cbae688a14ca
   m_configObjects: {}

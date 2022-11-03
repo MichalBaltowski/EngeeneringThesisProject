@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SimulationManager : MonoBehaviour {
 
@@ -11,16 +13,33 @@ public class SimulationManager : MonoBehaviour {
     public List<Car> carPopulationList;
     public Car car;
 
+    private Text mutationChanceText;
+
     private GameObject popup;
 
     void Start() {
-        popup = GameObject.Find("EndSimulationPopup");
         setSpawner();
         initGeneticAlgorithm();
         initGUI();
         initPupulation();
+        setEndSimulationPopup();
     }
-    public void setSpawner() {
+
+    private void setEndSimulationPopup() {
+        popup = GameObject.Find("EndSimulationPopup");
+        mutationChanceText = GameObject.Find("PopulationSizeStatValueText").GetComponent<Text>();
+       
+        popup.SetActive(false);
+        //StartCoroutine(ExampleCoroutine());
+    }
+
+    IEnumerator ExampleCoroutine() {
+        yield return new WaitForSeconds(3);
+        Debug.Log("3 sekundy później");
+        
+    }
+
+    private void setSpawner() {
         spawner = GameObject.FindGameObjectWithTag("Spawn");
     }
     private void initGeneticAlgorithm() {
@@ -28,7 +47,7 @@ public class SimulationManager : MonoBehaviour {
         geneticAlgorithm.setMutationChance(ParametersDto.getMutationChance());
         geneticAlgorithm.setMutationStrength(ParametersDto.getMutationStrength());
     }
-    public void initGUI() {
+    private void initGUI() {
         gui = new Gui();
         gui.initializeGui();
     }
@@ -40,13 +59,13 @@ public class SimulationManager : MonoBehaviour {
         }
     }
 
-    public void initializeNewPopulation() {
+    private void initializeNewPopulation() {
         carPopulationList = new List<Car>();
         initializeCars(carPopulationList);
         ParametersDto.incrementGenerationNumber();
     }
 
-    public void initializeNextGeneration() {
+    private void initializeNextGeneration() {
         List<Car> nextGenCarList = new List<Car>();
         initializeCars(nextGenCarList);
         geneticAlgorithm.createNextPopulation(carPopulationList, nextGenCarList);
@@ -97,7 +116,7 @@ public class SimulationManager : MonoBehaviour {
         return units;
     }
 
-    private void endSimulationIfCarsGetsToMeta() {
+    public void endSimulationIfCarsGetsToMeta() {
         bool isSimulationOver = false;
         int howManyCarsEndedSimulation = 0;
         foreach (Car car in carPopulationList) {
@@ -107,12 +126,10 @@ public class SimulationManager : MonoBehaviour {
                 howManyCarsEndedSimulation++;
             }
         }
-        //if (isSimulationOver) {
-            if (true) {
-                popup.active = true;
-
-
-            new FileManager().writeScoreToFile(prepareDataToSave(howManyCarsEndedSimulation));
+        if (isSimulationOver) {
+            ParametersDto.setDuration(gui.getTime());
+            SceneManager.LoadScene("EndSimulationScene");
+            //new FileManager().writeScoreToFile(prepareDataToSave(howManyCarsEndedSimulation));
 
             //UnityEditor.EditorApplication.isPlaying = false;
         }
@@ -129,7 +146,7 @@ public class SimulationManager : MonoBehaviour {
             .createNewDataForTxt();
     }
 
-    public void initializeCars(List<Car> carList) {
+    private void initializeCars(List<Car> carList) {
         for (int i = 0; i < ParametersDto.getPopulationSize(); i++) {
             Car clone = spawnNewCar();
             clone.name = "CAR" + i;
@@ -144,11 +161,7 @@ public class SimulationManager : MonoBehaviour {
 
     //inicjalizuje siec skladajaca sie 
     //z pięciu neuronow w 1 warstwie, trzech w 2 warstwie i dwóch w 3 warstwie
-    public static NeuralNetwork initNeuronalNetwork() {
+    private static NeuralNetwork initNeuronalNetwork() {
         return new NeuralNetwork(new int[] { 5, 3, 2 });
-    }
-
-    public void startSimulation() {
-        SceneManager.LoadScene("MainMenuScene");
     }
 }

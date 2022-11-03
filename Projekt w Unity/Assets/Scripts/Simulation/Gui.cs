@@ -13,6 +13,7 @@ public class Gui {
     private Button fastestSpeedButton;
     private float time;
     private TimeType selectedTimeSpeed;
+    private string finalTime;
 
     public void initializeGui() {
         initText();
@@ -53,6 +54,10 @@ public class Gui {
         time += Time.deltaTime;
     }
 
+    public string getTime() {
+        return finalTime;
+    }
+
     private void displayStatsOnGUI() {
         displayGeneration();
         displayMutationChance();
@@ -76,7 +81,8 @@ public class Gui {
     private void displayTime(float timeToDisplay) {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        finalTime = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeText.text = finalTime;
     }
 
     private void displayPopulation() {

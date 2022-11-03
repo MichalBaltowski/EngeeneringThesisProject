@@ -19,3 +19,223 @@ Mutation strength 0,2
 
 ==============================
 
+New record added: 03.11.2022 19:33:44
+Czas trwania ewolucji 24 sekund
+Do mety dotarły 0 samochody
+Generacja 1
+Wielkość populacji 90
+Mutation chance 0,5
+Mutation strength 0,2
+
+==============================
+
+New record added: 03.11.2022 19:37:14
+Czas trwania ewolucji 5 sekund
+Do mety dotarły 0 samochody
+Generacja 1
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:14
+Czas trwania ewolucji 6 sekund
+Do mety dotarły 0 samochody
+Generacja 2
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 3
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 4
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 5
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 6
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 7
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 8
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 9
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 10
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 11
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 12
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 13
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 14
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 15
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 16
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:15
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 17
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 19:37:16
+Czas trwania ewolucji 7 sekund
+Do mety dotarły 0 samochody
+Generacja 18
+Wielkość populacji 0
+Mutation chance 0
+Mutation strength 0
+
+==============================
+
+New record added: 03.11.2022 20:16:44
+Czas trwania ewolucji 67 sekund
+Do mety dotarły 90 samochody
+Generacja 2
+Wielkość populacji 90
+Mutation chance 0,5
+Mutation strength 0,2
+
+==============================
+
+New record added: 03.11.2022 20:35:32
+Czas trwania ewolucji 64 sekund
+Do mety dotarły 90 samochody
+Generacja 1
+Wielkość populacji 90
+Mutation chance 0,5
+Mutation strength 0,2
+
+==============================
+
+New record added: 03.11.2022 21:55:11
+Czas trwania ewolucji 64 sekund
+Do mety dotarły 90 samochody
+Generacja 1
+Wielkość populacji 90
+Mutation chance 0,5
+Mutation strength 0,2
+
+==============================
+
