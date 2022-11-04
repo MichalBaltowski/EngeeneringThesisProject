@@ -22,18 +22,10 @@ public class SimulationManager : MonoBehaviour {
         initGeneticAlgorithm();
         initGUI();
         initPupulation();
-        setEndSimulationPopup();
-    }
-
-    private void setEndSimulationPopup() {
-        popup = GameObject.Find("EndSimulationPopup");
-        mutationChanceText = GameObject.Find("PopulationSizeStatValueText").GetComponent<Text>();
-       
-        popup.SetActive(false);
-        //StartCoroutine(ExampleCoroutine());
     }
 
     IEnumerator ExampleCoroutine() {
+        //StartCoroutine(ExampleCoroutine());
         yield return new WaitForSeconds(3);
         Debug.Log("3 sekundy później");
         
@@ -126,7 +118,7 @@ public class SimulationManager : MonoBehaviour {
                 howManyCarsEndedSimulation++;
             }
         }
-        if (isSimulationOver) {
+        if (true) {
             ParametersDto.setDuration(gui.getTime());
             SceneManager.LoadScene("EndSimulationScene");
             //new FileManager().writeScoreToFile(prepareDataToSave(howManyCarsEndedSimulation));

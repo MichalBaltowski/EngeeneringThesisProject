@@ -11,8 +11,7 @@ public class EndSimulationManager : MonoBehaviour {
     private Text populationSizeText;
     private Text mutationChanceText;
     private Text mutationStrengthText;
-
-
+  
     void Start() {
         initializeTextElements();
         initializeTextValue();
@@ -33,9 +32,8 @@ public class EndSimulationManager : MonoBehaviour {
     private void initializeTextValue() {
         generationText.text = ParametersDto.getGenerationNumber().ToString();
         durationText.text = ParametersDto.getDuration().ToString();
-        mutationChanceText.text = ParametersDto.getPopulationSize().ToString();
-        mutationStrengthText.text = ParametersDto.getPopulationSize().ToString();
+        mutationChanceText.text = ParametersDto.getMutationChance().ToString();
+        mutationStrengthText.text = ParametersDto.getMutationStrength().ToString();
         populationSizeText.text = ParametersDto.getPopulationSize().ToString();
-
     }
 }
