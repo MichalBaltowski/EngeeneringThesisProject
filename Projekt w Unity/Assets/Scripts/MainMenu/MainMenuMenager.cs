@@ -5,6 +5,11 @@ public class MainMenuMenager : MonoBehaviour
 {
     void Start() {
         setDefaultParameters();
+        temp();
+    }
+
+    public void temp() {
+        new FileManager().deserializeRecordsFromFile();
     }
 
     public void startSimulation() {
