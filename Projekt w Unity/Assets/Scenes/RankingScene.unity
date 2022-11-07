@@ -1318,7 +1318,7 @@ GameObject:
   - component: {fileID: 1460702109}
   - component: {fileID: 1460702108}
   m_Layer: 5
-  m_Name: Mutation StrengthText
+  m_Name: MutationStrengthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1596,8 +1596,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SetParamsManager, Assembly-CSharp
+      - m_Target: {fileID: 1289041882}
+        m_TargetAssemblyTypeName: RankingManager, Assembly-CSharp
         m_MethodName: returnToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -1792,7 +1792,7 @@ GameObject:
   - component: {fileID: 1933401389}
   - component: {fileID: 1933401388}
   m_Layer: 5
-  m_Name: Mutation ChanceText
+  m_Name: MutationChanceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

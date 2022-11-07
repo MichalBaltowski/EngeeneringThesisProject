@@ -39,8 +39,6 @@ public class FileManager {
     private void createNewFile() {
         try {
             using (StreamWriter sw = File.CreateText(FILE_NAME)) {
-                sw.WriteLine("New file created: {0}", currentDateTime);
-                sw.WriteLine("Author: Micha³ Ba³towski");
                 addDataToFile(sw);
             }
         } catch (Exception ex) {
@@ -51,7 +49,8 @@ public class FileManager {
     private void appendRecordToFile() {
         try {
             using (StreamWriter sw = File.AppendText(FILE_NAME)) {
-                sw.WriteLine("New record added: {0}", currentDateTime);
+                sw.WriteLine("\n>");
+                sw.WriteLine("1:New record added: {0}", currentDateTime);
                 addDataToFile(sw);
             }
         } catch (Exception ex) {
@@ -60,13 +59,12 @@ public class FileManager {
     }
 
     private void addDataToFile(StreamWriter sw) {
-        sw.WriteLine("Czas trwania symulacji:" + dataToSave.getTimeInSecondsSinceStartup() + " sekund");
-        sw.WriteLine("Do mety dotar³y:" + dataToSave.getnumberOfFinishingCar() + " samochody");
-        sw.WriteLine("Generacja:" + dataToSave.getGenerationNumber());
-        sw.WriteLine("Wielkoœæ populacji:" + dataToSave.getPopulationSize());
-        sw.WriteLine("Mutation chance:" + dataToSave.getMutationChance());
-        sw.WriteLine("Mutation strength:" + dataToSave.getMutationStrength());
-        sw.WriteLine("\n>n");
+        sw.WriteLine("2:Duration:" + dataToSave.getTimeInSecondsSinceStartup() + " seconds");
+        sw.WriteLine("3:How many cars finished:" + dataToSave.getnumberOfFinishingCar());
+        sw.WriteLine("4:Generation:" + dataToSave.getGenerationNumber());
+        sw.WriteLine("5:Population Size:" + dataToSave.getPopulationSize());
+        sw.WriteLine("6:Mutation chance:" + dataToSave.getMutationChance());
+        sw.WriteLine("7:Mutation strength:" + dataToSave.getMutationStrength());
     }
 
     private List<RankingData> deserializeRecords(String text) {
@@ -74,27 +72,49 @@ public class FileManager {
 
         var recordsCollection = text.Split('>');
         foreach (string record in recordsCollection) {
-            var temp = record.Trim().Split('\n');
-            string generation="";
+            var recordAttributes = record.Trim().Split('\n');
+
+            int generation = 0;
             string duration = "";
-            string populationSize = "";
-            string mutationChance = "";
-            string mutationStrength = "";
+            int populationSize = 0;
+            float mutationChance = 0f;
+            float mutationStrength = 0f;
 
+            foreach (string line in recordAttributes) {
+                var attribute = line.Split(':');
+                int attributeNumber = Int16.Parse(attribute[0]);
 
-
-            foreach (string line in temp) {
-                var temp4 = line.Split(':');
-                
-                generation = line.Split(':')[1];
-               
+                switch (attributeNumber) {
+                    case 2:
+                        duration = attribute[2];
+                        break;
+                    case 4:
+                        generation = Int16.Parse(attribute[2]);
+                        break;
+                    case 5:
+                        populationSize = Int16.Parse(attribute[2]);
+                        break;
+                    case 6:
+                        mutationChance = float.Parse(attribute[2]);
+                        break;
+                    case 7:
+                        mutationStrength = float.Parse(attribute[2]);
+                        break;
+                    default:
+                        break;
+                }
             }
 
-            RankingDataBuilder.get().withGenerationNumber(Int16.Parse(generation));
-
+            var temp = RankingDataBuilder.get()
+                 .withGenerationNumber(generation)
+                 .withDuration(duration)
+                 .withPopulationSize(populationSize)
+                 .withMutationChance(mutationChance)
+                 .withMutationStrength(mutationStrength)
+                 .createRankingData();
+            result.Add(temp);
         }
-        
 
-        return new List<RankingData>();
+        return result;
     }
 }

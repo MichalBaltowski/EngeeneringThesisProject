@@ -43,7 +43,6 @@ public sealed class DataForTxtBuilder
         return this;
     }
 
-
     public DataForTxt createNewDataForTxt() {
         return new DataForTxt(this);
     }

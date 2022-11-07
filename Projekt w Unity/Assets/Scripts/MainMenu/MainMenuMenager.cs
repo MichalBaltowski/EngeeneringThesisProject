@@ -5,11 +5,6 @@ public class MainMenuMenager : MonoBehaviour
 {
     void Start() {
         setDefaultParameters();
-        temp();
-    }
-
-    public void temp() {
-        new FileManager().deserializeRecordsFromFile();
     }
 
     public void startSimulation() {
@@ -25,7 +20,7 @@ public class MainMenuMenager : MonoBehaviour
     }
 
     public void terminateProgram() {
-        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
     private void setDefaultParameters() {

@@ -118,12 +118,10 @@ public class SimulationManager : MonoBehaviour {
                 howManyCarsEndedSimulation++;
             }
         }
-        if (true) {
+        if (isSimulationOver) {
             ParametersDto.setDuration(gui.getTime());
             SceneManager.LoadScene("EndSimulationScene");
-            //new FileManager().writeScoreToFile(prepareDataToSave(howManyCarsEndedSimulation));
-
-            //UnityEditor.EditorApplication.isPlaying = false;
+            new FileManager().writeScoreToFile(prepareDataToSave(howManyCarsEndedSimulation));
         }
     }
 

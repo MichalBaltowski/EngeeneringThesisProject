@@ -1,3 +1,5 @@
+using System;
+
 static public class ParametersDto
 {
     private static int sizePopulation;
@@ -15,13 +17,13 @@ static public class ParametersDto
 
     public static void setMutationChance(float newValue) {
         if (newValue > 0.0 && newValue < 1) {
-            mutationChance = newValue;
+            mutationChance = (float)Math.Round(newValue, 2);
         }
     }
 
     public static void setMutationStrength(float newValue) {
         if (newValue > 0.0 && newValue < 1) {
-            mutationStrength = newValue;
+            mutationStrength = (float)Math.Round(newValue, 2);
         }
     }
 
@@ -50,11 +52,11 @@ static public class ParametersDto
     }
 
     public static float getMutationChance() {
-        return mutationChance;
+        return (float)Math.Round(mutationChance, 2);
     }
 
     public static float getMutationStrength() {
-        return mutationStrength;
+        return (float)Math.Round(mutationStrength, 2); ;
     }
 
     public static bool isParamsInitialized() {

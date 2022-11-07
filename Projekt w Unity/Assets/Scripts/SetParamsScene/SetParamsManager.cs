@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 public class SetParamsManager : MonoBehaviour
 {
+    private Slider populationSizeSlider;
     private Slider mutationChanceSlider;
     private Slider mutationStrengthSlider;
-    private Slider populationSizeSlider;
 
+    private Text populationSizeText;
     private Text mutationChanceText;
     private Text mutationStrengthText;
-    private Text populationSizeText;
 
     void Start() {
         initializePopulationSizeInputs();
@@ -31,7 +31,7 @@ public class SetParamsManager : MonoBehaviour
     private void initializePopulationSizeInputs() {
         populationSizeSlider = GameObject.Find("PopulationSizeSlider").GetComponent<Slider>();
         populationSizeText = GameObject.Find("PopulationSizeText").GetComponent<Text>();
-        populationSizeSlider.normalizedValue = ParametersDto.getPopulationSize();
+        populationSizeSlider.value = ParametersDto.getPopulationSize();
         populationSizeText.text = ParametersDto.getPopulationSize().ToString();
     }
 
