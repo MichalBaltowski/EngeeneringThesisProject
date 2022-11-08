@@ -1,5 +1,6 @@
-public class RankingData
-{
+using System;
+
+public class RankingData : IComparable<RankingData> {
     private int generation;
     private string duration;
     private int populationSize;
@@ -24,4 +25,7 @@ public class RankingData
 
     public float getMutationStrength() { return mutationStrength; }
 
+    public int CompareTo(RankingData dataRecord) {
+       return this.generation.CompareTo(dataRecord.generation);
+    }
 }

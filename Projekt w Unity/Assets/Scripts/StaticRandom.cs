@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-
 public static class StaticRandom {
     //ziarno uzywane do utworzenia instancji klasy Random. Dzieki wydzieleniu
     //do osobnej zmiennej inkrementowanej przez threadLocal
@@ -13,6 +12,16 @@ public static class StaticRandom {
         seed = Environment.TickCount;
     }
 
+    //losuje liczbê z domyœlnego zakresu od 0.0 do 1.0
+    public static float getRandomFloatNumberDefaultRange() {
+        return (float)Instance.NextDouble();
+    }
+
+    //losuje liczbê z zakresu min range do max range
+    public static float randomFloatNumberFromRange(float minRange, float maxRange) {
+        return (float)Instance.NextDouble() * (maxRange - minRange) + minRange; ;
+    }
+
     //prywatne odwo³anie do klasy random
     private static Random Instance { get { return threadLocal.Value; } }
 
@@ -20,16 +29,4 @@ public static class StaticRandom {
     //inkrementuje zmienn¹ seed i przechowuje j¹ jako zmienn¹ atomow¹
     private static ThreadLocal<Random> threadLocal = new ThreadLocal<Random>
         (() => new Random(Interlocked.Increment(ref seed)));
-
-
-
-    //losuje liczbê z zakresu min range do max range
-    public static float randomFloatNumberFromRange(float minRange, float maxRange) {
-        return (float)Instance.NextDouble() * (maxRange - minRange) + minRange; ;
-    }
-
-    //losuje liczbê z domyœlnego zakresu od 0.0 do 1.0
-    public static float randomFloatNumberDefaultRange() {
-        return (float)Instance.NextDouble();
-    }
 }

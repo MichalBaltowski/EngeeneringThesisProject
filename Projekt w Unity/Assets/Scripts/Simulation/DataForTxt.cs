@@ -4,7 +4,7 @@ public sealed class DataForTxt {
     private int populationSize;
     private float mutationChance;
     private float mutationStrength;
-    private int timeInSecondsSinceStartup;
+    private string duration;
 
     public DataForTxt(DataForTxtBuilder builder) {
         generation = builder.generation;
@@ -12,7 +12,7 @@ public sealed class DataForTxt {
         populationSize = builder.populationSize;
         mutationChance = builder.mutationChance;
         mutationStrength = builder.mutationStrength;
-        timeInSecondsSinceStartup = builder.timeInSecondsSinceStartup;
+        duration = builder.duration;
     }
 
     public int getGenerationNumber() { return generation; }
@@ -25,6 +25,6 @@ public sealed class DataForTxt {
 
     public float getMutationStrength() { return mutationStrength; }
 
-    public int getTimeInSecondsSinceStartup() { return timeInSecondsSinceStartup; }
+    public string getDuration() { return duration; }
 
 }

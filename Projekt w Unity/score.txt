@@ -1,15 +1,16 @@
-2:Duration:110 seconds
-3:How many cars finished:2
-4:Generation:9
-5:Population Size:90
-6:Mutation chance:0,42
-7:Mutation strength:0,2
+1;New record added; 08.11.2022 21:09:15
+2;Duration;10:12
+3;How many cars finished;2
+4;Generation;13
+5;Population Size;90
+6;Mutation chance;0,5
+7;Mutation strength;0,2
 
 >
-1:New record added: 07.11.2022 22:01:09
-2:Duration:221 seconds
-3:How many cars finished:1
-4:Generation:22
-5:Population Size:73
-6:Mutation chance:0,46
-7:Mutation strength:0,17
+1;New record added; 08.11.2022 21:13:14
+2;Duration;13:01
+3;How many cars finished;1
+4;Generation;31
+5;Population Size;90
+6;Mutation chance;0,5
+7;Mutation strength;0,2

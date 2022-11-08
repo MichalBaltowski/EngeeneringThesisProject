@@ -14,8 +14,14 @@ public class FileManager {
     }
 
     public List<RankingData> deserializeRecordsFromFile() {
-        string text = getAllTextFromFile();
-        return deserializeRecords(text);
+        List<RankingData> result = new List<RankingData>();
+        if (File.Exists(FILE_NAME)) {
+            string text = getAllTextFromFile();
+            if (text.Length > 0) {
+                result = deserializeRecords(text);
+            }
+        }
+        return result;
     }
 
     public void writeScoreToFile(DataForTxt dataToSaveInFile) {
@@ -39,6 +45,7 @@ public class FileManager {
     private void createNewFile() {
         try {
             using (StreamWriter sw = File.CreateText(FILE_NAME)) {
+                sw.WriteLine("1;New record added; {0}", currentDateTime);
                 addDataToFile(sw);
             }
         } catch (Exception ex) {
@@ -50,7 +57,7 @@ public class FileManager {
         try {
             using (StreamWriter sw = File.AppendText(FILE_NAME)) {
                 sw.WriteLine("\n>");
-                sw.WriteLine("1:New record added: {0}", currentDateTime);
+                sw.WriteLine("1;New record added; {0}", currentDateTime);
                 addDataToFile(sw);
             }
         } catch (Exception ex) {
@@ -59,12 +66,12 @@ public class FileManager {
     }
 
     private void addDataToFile(StreamWriter sw) {
-        sw.WriteLine("2:Duration:" + dataToSave.getTimeInSecondsSinceStartup() + " seconds");
-        sw.WriteLine("3:How many cars finished:" + dataToSave.getnumberOfFinishingCar());
-        sw.WriteLine("4:Generation:" + dataToSave.getGenerationNumber());
-        sw.WriteLine("5:Population Size:" + dataToSave.getPopulationSize());
-        sw.WriteLine("6:Mutation chance:" + dataToSave.getMutationChance());
-        sw.WriteLine("7:Mutation strength:" + dataToSave.getMutationStrength());
+        sw.WriteLine("2;Duration;" + dataToSave.getDuration());
+        sw.WriteLine("3;How many cars finished;" + dataToSave.getnumberOfFinishingCar());
+        sw.WriteLine("4;Generation;" + dataToSave.getGenerationNumber());
+        sw.WriteLine("5;Population Size;" + dataToSave.getPopulationSize());
+        sw.WriteLine("6;Mutation chance;" + dataToSave.getMutationChance());
+        sw.WriteLine("7;Mutation strength;" + dataToSave.getMutationStrength());
     }
 
     private List<RankingData> deserializeRecords(String text) {
@@ -81,7 +88,7 @@ public class FileManager {
             float mutationStrength = 0f;
 
             foreach (string line in recordAttributes) {
-                var attribute = line.Split(':');
+                var attribute = line.Split(';');
                 int attributeNumber = Int16.Parse(attribute[0]);
 
                 switch (attributeNumber) {

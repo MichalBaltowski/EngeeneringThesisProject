@@ -1,21 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class SimulationManager : MonoBehaviour {
 
     private Gui gui;
     private GeneticAlgorithm geneticAlgorithm;
     private GameObject spawner;
-    private CameraScript cameraScript;
     public List<Car> carPopulationList;
     public Car car;
-
-    private Text mutationChanceText;
-
-    private GameObject popup;
 
     void Start() {
         setSpawner();
@@ -24,20 +17,11 @@ public class SimulationManager : MonoBehaviour {
         initPupulation();
     }
 
-    IEnumerator ExampleCoroutine() {
-        //StartCoroutine(ExampleCoroutine());
-        yield return new WaitForSeconds(3);
-        Debug.Log("3 sekundy później");
-        
-    }
-
     private void setSpawner() {
         spawner = GameObject.FindGameObjectWithTag("Spawn");
     }
     private void initGeneticAlgorithm() {
-        geneticAlgorithm = new GeneticAlgorithm();
-        geneticAlgorithm.setMutationChance(ParametersDto.getMutationChance());
-        geneticAlgorithm.setMutationStrength(ParametersDto.getMutationStrength());
+        geneticAlgorithm = new GeneticAlgorithm(ParametersDto.getMutationChance(), ParametersDto.getMutationStrength());
     }
     private void initGUI() {
         gui = new Gui();
@@ -132,7 +116,7 @@ public class SimulationManager : MonoBehaviour {
             .withPopulationSize(ParametersDto.getPopulationSize())
             .withMutationChance(ParametersDto.getMutationChance())
             .withMutationStrength(ParametersDto.getMutationStrength())
-            .withTimeInSecondsSinceStartup((int)Time.realtimeSinceStartup)
+            .withDuration(ParametersDto.getDuration())
             .createNewDataForTxt();
     }
 

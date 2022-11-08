@@ -7,27 +7,21 @@ public class GeneticAlgorithm {
     private float mutationStrength;
     private Car bestCar;
 
-    public void setMutationChance(float value) {
-        mutationChance = value;
+    public GeneticAlgorithm(float mutationChance, float mutationStrength) {
+        this.mutationChance = mutationChance;
+        this.mutationStrength = mutationStrength;
     }
 
-    public void setMutationStrength(float value) {
-        mutationStrength = value;
-    }
-
-    //G³ówna metoda wykorzystywana przy tworzeniu nowej populacji przez klasê Manager
     public void createNextPopulation(List<Car> previousGenCarlist, List<Car> nextGenCarList) {
         eliminateCarsWithLowFitnessValue(previousGenCarlist);
         copyNetworkFromPrevToNewGeneration(previousGenCarlist, nextGenCarList);
-        mutateNewGeneration(nextGenCarList);
+        mutate(nextGenCarList);
     }
 
-    //sortuje liste samochodów malej¹co wzglêdem wartoœci fitness
     private void sortCarListByFitnessValue(List<Car> unsortedCarList) {
         unsortedCarList.Sort((x, y) => y.getFitnessValue().CompareTo(x.getFitnessValue()));
     }
 
-    //G³ówna logika algorytmu genetycznego
     private void eliminateCarsWithLowFitnessValue(List<Car> previousGenCarlist) {
         sortCarListByFitnessValue(previousGenCarlist);
         replaceWorstCarsWithBestCars(previousGenCarlist);
@@ -68,8 +62,6 @@ public class GeneticAlgorithm {
         }
     }
 
-    //Wyznacza liczbê najlepszych aut. Jeœli populacja jest ma³a to bêdzie to zawsze 2
-    //Jeœli jest wiêksza to bêdzie to 40% populacji
     private int setNumberOfBestCars(int listCarCount) {
         if (listCarCount < 10) {
             return 2;
@@ -78,29 +70,13 @@ public class GeneticAlgorithm {
         }
     }
 
-    //mutacja wag wykonana na wszystkich osobnikach
-    private void mutateNewGeneration(List<Car> nextGenCarList) {
+    private void mutate(List<Car> nextGenCarList) {
         foreach (Car car in nextGenCarList) {
             car.network.mutate(mutationChance, mutationStrength);
         }
     }
 
-    //wyznacza najlepszy pojazd w danej populacji w danym momencie
-    //publiczna metoda wykorzystywana by na bie¿¹co pokazywaæ wwartoœæ fitness najlepszego samochodu
-    public Car getBestCar(List<Car> carList) {
-        if (bestCar == null) {
-            bestCar = carList[0];
-        }
-        foreach (Car car in carList) {
-            if (car.getFitnessValue() > bestCar.getFitnessValue()) {
-                bestCar = car;
-            }
-        }
-        return bestCar;
-    }
-
-    //wypisuje liste samochodów z ich wartosciami fitness
-    //wykorzystanie tylko przy testach
+    //Test use only
     private void writeCarList(List<Car> tempListCar, bool special) {
         int i = 0;
         foreach (Car car in tempListCar) {

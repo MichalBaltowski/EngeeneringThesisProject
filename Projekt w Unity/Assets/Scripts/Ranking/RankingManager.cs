@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,27 +8,35 @@ public class RankingManager : MonoBehaviour {
     private Transform recordTemplate;
 
     void Start() {
-        var someObject = getDataForRanking();
-        showDataOnRanking(someObject);
+        initTableStructure();
+        showDataOnRanking(getDataForRanking());
     }
 
     public void returnToMainMenu() {
         SceneManager.LoadScene("MainMenuScene");
     }
 
-    private List<RankingData> getDataForRanking() {
-        return new FileManager().deserializeRecordsFromFile();
-    }
-
-    private void showDataOnRanking(List<RankingData> rankingData) {
+    private void initTableStructure() {
         recordsContainer = GameObject.Find("RecordsContainer").transform;
         recordTemplate = recordsContainer.Find("RecordTemplate");
         recordTemplate.gameObject.SetActive(false);
+    }
 
-        for (int position = 0; position < rankingData.Count; position++) {
+    private List<RankingData> getDataForRanking() {
+        var dataFromFile = new FileManager().deserializeRecordsFromFile();
+        sortDataByGeneration(dataFromFile);
+        return dataFromFile;
+    }
+
+    private void sortDataByGeneration(List<RankingData> unsortedData) {
+        unsortedData.Sort();
+    }
+
+    private void showDataOnRanking(List<RankingData> rankingData) {
+        for (int position = 0; position < rankingData.Count;) {
             var recordData = rankingData[position];
             var recordTransform = initializeRecord(position);
-            fillRecordWithData(recordTransform, recordData, position);
+            fillRecordWithData(recordTransform, recordData, ++position);
         }
     }
 

@@ -5,7 +5,7 @@ public sealed class DataForTxtBuilder
     internal int populationSize;
     internal float mutationChance;
     internal float mutationStrength;
-    internal int timeInSecondsSinceStartup;
+    internal string duration;
 
     private DataForTxtBuilder() {}
 
@@ -38,8 +38,8 @@ public sealed class DataForTxtBuilder
         return this;
     }
 
-    public DataForTxtBuilder withTimeInSecondsSinceStartup(int value) {
-        this.timeInSecondsSinceStartup = value;
+    public DataForTxtBuilder withDuration(string value) {
+        this.duration = value;
         return this;
     }
 

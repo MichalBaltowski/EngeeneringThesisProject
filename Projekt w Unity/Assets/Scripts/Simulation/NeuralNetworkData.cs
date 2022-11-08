@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 public class NeuralNetworkData {
     private List<List<List<float>>> weights;

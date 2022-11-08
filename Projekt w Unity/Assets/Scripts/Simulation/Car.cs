@@ -121,7 +121,7 @@ public class Car : MonoBehaviour {
     private void drive() {
         if (!manualSteering) {
             network.giveDataToNetwork(input);
-            float[] output = network.feedForward();//Call to network to feedforward
+            float[] output = network.feedForward();
             rb.angularVelocity = output[0] * torqueForce;
             rb.AddForce(transform.up * output[1] * 25f);
         } else {

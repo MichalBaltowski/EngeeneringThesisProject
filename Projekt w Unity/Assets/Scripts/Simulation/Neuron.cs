@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Neuron {
-    //licznik obiektów typu Neuron.
     private static int neuronCounter;
-    public Dictionary<Neuron, float> weights;
-    public string id;
-    public float output;
+    private string id;
     public String activationFunction;
+    public Dictionary<Neuron, float> weights;
+    public float output;
 
     public Neuron() {
         neuronCounter++;
         this.id = "Neuron_" + neuronCounter;
         this.activationFunction = "Tanh";
     }
-
-    //zwraca waartosc po 'przepuszczeniu' przez funkcje aktywacji
     public float activate(float value) {
         float outcome = 0f;
         switch (activationFunction) {
@@ -44,19 +41,6 @@ public class Neuron {
         return sum;
     }
 
-    //kopiuje wagi z innego neuronu i ustawia w neuronie dla ktorego zostala wywolana
-    public void copyWeightFromOtherNeuron(Neuron otherNeuron) {
-        if (weights != null) {
-            this.weights.Clear();
-            foreach (Neuron neuron in otherNeuron.weights.Keys) {
-                this.weights.Add(neuron, otherNeuron.weights[neuron]);
-                //Debug.Log("Skopiowano wagę: " + otherNeuron.weights[neuron] + " z " + otherNeuron.name + " do neuronu: " + this.name);
-            }
-        }
-    }
-
-    //funkcja zmienia wagi jesli wylosowana wartosc z zakresu [0.0;1.0] <= mutationchance
-    //jesli tak to modyfikuje wage o wylosowana wartosc
     public void mutateWeights(float mutationChance, float mutationStrength) {
         List<Neuron> temporaryListOfKeys = new List<Neuron>(weights.Keys);
         foreach (Neuron neuron in temporaryListOfKeys) {
@@ -66,17 +50,25 @@ public class Neuron {
         }
     }
 
-    //losuje liczby od 0 do 1
     private float drawMutationChanceRange() {
-        return StaticRandom.randomFloatNumberDefaultRange();
+        return StaticRandom.getRandomFloatNumberDefaultRange();
     }
-
-    //losuje liczbę dziesiętną z przedziału od -mutationStrength do mutationStrength (np, -0.2;0.2)
     private float drawMutationStrengthRange(float mutationStrength) {
         return StaticRandom.randomFloatNumberFromRange(-mutationStrength, mutationStrength);
     }
 
-    //wypisuje zawartosc weights - slownika<neuron,waga>
+    //test use only
+    private void copyWeightFromOtherNeuron(Neuron otherNeuron) {
+        if (weights != null) {
+            this.weights.Clear();
+            foreach (Neuron neuron in otherNeuron.weights.Keys) {
+                this.weights.Add(neuron, otherNeuron.weights[neuron]);
+
+            }
+        }
+    }
+
+    //test use only
     private void writeWeights() {
         Debug.Log("Wyświetlam zawartosc słownika wag dla " + this.id);
         foreach (Neuron neuron in this.weights.Keys) {
