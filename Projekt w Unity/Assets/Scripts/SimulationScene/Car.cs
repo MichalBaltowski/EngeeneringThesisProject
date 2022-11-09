@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Car : MonoBehaviour {
 
@@ -14,9 +13,9 @@ public class Car : MonoBehaviour {
     private GameObject leftSecondSensor;
     private GameObject rightFirstSensor;
     private GameObject rightSecondSensor;
-    private float sensorLineLenght = 40f;
+    private float sensorLineLenght = ParametersDto.getCarSensorsLength();
 
-    public bool collided = false;
+    public bool eliminated = false;
     public bool finishSimulation = false;
 
     private Vector2 lastPosition;
@@ -27,10 +26,8 @@ public class Car : MonoBehaviour {
 
     private float torqueForce = -150f;
     private float timeRemaining;
-    [Header("Czas życia populacji")]
-    public float lifeSpan;
-    [Header("Manual steering")]
-    public bool manualSteering = false;
+
+    private bool manualSteering = ParametersDto.isManualSteering();
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -40,16 +37,69 @@ public class Car : MonoBehaviour {
         lastPosition = transform.position;
 
         input = new float[5];
-        timeRemaining = lifeSpan;
+        timeRemaining = ParametersDto.getCarLifeSpan();
         initializeSensors();
+    }
+    void FixedUpdate() {
+        calculateFitnessValue();
+        if (!eliminated) {
+            sensor();
+            drive();
+            countTotalDistanceTravelled();
+        }
+    }
+
+    void Update() {
+        timeRemaining -= Time.deltaTime;
+        if (timeRemaining < 0) {
+            eliminated = true;
+        }
+    }
+
+    public float getTotalDistanceTravelled() {
+        return totalDistanceTravelled;
+    }
+
+    public float getFitnessValue() {
+        return fitnessValue;
+    }
+
+    public void setFitnessValue(int value) {
+        fitnessValue = value;
+    }
+
+    public void calculateFitnessValue() {
+        fitnessValue += totalDistanceTravelled;
+    }
+
+    public void countTotalDistanceTravelled() {
+        totalDistanceTravelled += Vector2.Distance(transform.position, lastPosition);
+        lastPosition = transform.position;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        eliminated = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (!achievedCheckpoints.Contains(collision.gameObject)) {
+            achievedCheckpoints.Add(collision.gameObject);
+            fitnessValue += timeRemaining * 10;
+            fitnessValue += (float)fitnessValue * 0.1f;
+            timeRemaining = ParametersDto.getCarLifeSpan();
+
+            if (collision.name.Equals("META")) {
+                finishSimulation = true;
+            }
+        }
     }
 
     private void initializeSensors() {
-        topSensor = this.gameObject.transform.GetChild(0).gameObject;
-        leftFirstSensor = this.gameObject.transform.GetChild(1).gameObject;
-        leftSecondSensor = this.gameObject.transform.GetChild(2).gameObject;
-        rightFirstSensor = this.gameObject.transform.GetChild(3).gameObject;
-        rightSecondSensor = this.gameObject.transform.GetChild(4).gameObject;
+        topSensor = gameObject.transform.GetChild(0).gameObject;
+        leftFirstSensor = gameObject.transform.GetChild(1).gameObject;
+        leftSecondSensor = gameObject.transform.GetChild(2).gameObject;
+        rightFirstSensor = gameObject.transform.GetChild(3).gameObject;
+        rightSecondSensor = gameObject.transform.GetChild(4).gameObject;
         sensors = new GameObject[5];
         sensors[0] = leftFirstSensor;
         sensors[1] = leftSecondSensor;
@@ -58,23 +108,7 @@ public class Car : MonoBehaviour {
         sensors[4] = rightFirstSensor;
     }
 
-    void FixedUpdate() {
-        calculateFitnessValue();
-        if (!this.collided) {
-            sensor();
-            drive();
-            countTotalDistanceTravelled();
-        }
-    }
-
-    private void Update() {
-        timeRemaining -= Time.deltaTime;
-        if (timeRemaining < 0) {
-            this.collided = true;
-        }
-    }
-
-    void sensor() {
+    private void sensor() {
         int detectionLayer = 1 << 9;
         for (int i = 0; i < sensors.Length ; i++) {
             Vector2 genericDirection = Quaternion.Euler(0, 0, i * -45 + 90) * sensors[i].transform.TransformDirection(Vector2.up) * sensorLineLenght;
@@ -92,32 +126,6 @@ public class Car : MonoBehaviour {
         }
     }
 
-    public void calculateFitnessValue() {
-        this.fitnessValue += totalDistanceTravelled;
-    }
-
-    public void countTotalDistanceTravelled() {
-        totalDistanceTravelled += Vector2.Distance(transform.position, lastPosition);
-        lastPosition = transform.position;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        collided = true;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (!achievedCheckpoints.Contains(collision.gameObject)) {
-            achievedCheckpoints.Add(collision.gameObject);
-            fitnessValue += timeRemaining * 10;
-            fitnessValue += (float)fitnessValue * 0.1f;
-            timeRemaining = lifeSpan;
-
-            if (collision.name.Equals("META")) {
-                finishSimulation = true;
-            }
-        }
-    }
-
     private void drive() {
         if (!manualSteering) {
             network.giveDataToNetwork(input);
@@ -130,17 +138,5 @@ public class Car : MonoBehaviour {
                 rb.AddForce(transform.up * 25f);
             }
         }
-    }
-
-    public float getTotalDistanceTravelled() {
-        return totalDistanceTravelled;
-    }
-
-    public float getFitnessValue() {
-        return fitnessValue;
-    }
-
-    public void setFitnessValue(int value) {
-        fitnessValue = value;
     }
 }

@@ -25,9 +25,7 @@ public class MainMenuMenager : MonoBehaviour
 
     private void setDefaultParameters() {
         if (!ParametersDto.isParamsInitialized()) {
-            ParametersDto.setPopulationSize(90);
-            ParametersDto.setMutationChance(0.5f);
-            ParametersDto.setMutationStrength(0.2f);
+            ParametersDto.setDefault();
         }
     }
 }

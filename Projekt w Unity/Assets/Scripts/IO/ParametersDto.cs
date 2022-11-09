@@ -8,7 +8,18 @@ static public class ParametersDto
     private static int generationNumber;
     private static int aliveUnitsNumber;
     private static string duration;
+    private static int carLifeSpan;
+    private static float carSensorsLength;
+    private static bool manualSteering;
 
+    public static void setDefault() {
+        ParametersDto.setPopulationSize(90);
+        ParametersDto.setMutationChance(0.5f);
+        ParametersDto.setMutationStrength(0.2f);
+        ParametersDto.setCarLifeSpan(5);
+        ParametersDto.setCarSensorsLength(40f);
+        ParametersDto.setManualSteering(false);
+    }
     public static void setPopulationSize(int newValue) {
         if(newValue > 1 && newValue < 300) {
             sizePopulation = newValue;
@@ -43,6 +54,20 @@ static public class ParametersDto
         duration = newValue;
     }
 
+    public static void setCarLifeSpan(int newValue) {
+        if (newValue >= 0) {
+            carLifeSpan = newValue;
+        }
+    }
+
+    public static void setManualSteering(bool newValue) {
+        manualSteering = newValue;
+    }
+
+    public static void setCarSensorsLength(float newValue) {
+        carSensorsLength = newValue;
+    }
+
     public static void incrementGenerationNumber() {
         generationNumber++;
     }
@@ -73,5 +98,17 @@ static public class ParametersDto
 
     public static string getDuration() {
         return duration;
+    }
+
+    public static int getCarLifeSpan() {
+        return carLifeSpan;
+    }
+
+    public static bool isManualSteering() {
+        return manualSteering;
+    }
+
+    public static float getCarSensorsLength() {
+        return carSensorsLength;
     }
 }

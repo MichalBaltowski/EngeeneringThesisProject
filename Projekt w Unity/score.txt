@@ -14,3 +14,12 @@
 5;Population Size;90
 6;Mutation chance;0,5
 7;Mutation strength;0,2
+
+>
+1;New record added; 08.11.2022 22:21:22
+2;Duration;11:13
+3;How many cars finished;1
+4;Generation;14
+5;Population Size;90
+6;Mutation chance;0,5
+7;Mutation strength;0,2

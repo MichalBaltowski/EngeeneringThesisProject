@@ -84,7 +84,7 @@ public class SimulationManager : MonoBehaviour {
     private int countAliveUnits() {
         int units = 0;
         carPopulationList.ForEach(car => {
-            if (!car.collided) {
+            if (!car.eliminated) {
                 units++;
             }
         });
