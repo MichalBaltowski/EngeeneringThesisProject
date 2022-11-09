@@ -7,3 +7,14 @@
 7;Car life span;4
 8;Car sensor length;28
 9;Manual steering;28
+
+>
+1;New record added; 09.11.2022 21:59:42
+2;Duration;15:54
+3;Generation;20
+4;Population Size;90
+5;Mutation chance;0,5
+6;Mutation strength;0,2
+7;Car life span;5
+8;Car sensor length;40
+9;Manual steering;40
