@@ -6,23 +6,21 @@ public static class StaticRandom {
     //mam pewnoœæ ¿e Random wywo³ywane dla ca³ej populacji bedzie zwracal rozne wartosci
     private static int seed;
 
-    //Statyczny konstruktor
-    //Pobiera liczbê milisekund, które up³ynê³y od momentu uruchomienia systemu
+    //Get miliseconds from system start
     static StaticRandom() {
         seed = Environment.TickCount;
     }
 
-    //losuje liczbê z domyœlnego zakresu od 0.0 do 1.0
+    //get random number from 0.0 to 1.0
     public static float getRandomFloatNumberDefaultRange() {
         return (float)Instance.NextDouble();
     }
 
-    //losuje liczbê z zakresu min range do max range
+    //get random number from min range to max range
     public static float randomFloatNumberFromRange(float minRange, float maxRange) {
         return (float)Instance.NextDouble() * (maxRange - minRange) + minRange; ;
     }
 
-    //prywatne odwo³anie do klasy random
     private static Random Instance { get { return threadLocal.Value; } }
 
     //przy ka¿dym wywo³aniu tworzy now¹ instancje klasy Random z parametrem seed

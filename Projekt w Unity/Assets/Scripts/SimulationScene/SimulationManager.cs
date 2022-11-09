@@ -12,9 +12,13 @@ public class SimulationManager : MonoBehaviour {
 
     void Start() {
         setSpawner();
-        initGeneticAlgorithm();
         initGUI();
+        initGeneticAlgorithm();
         initPupulation();
+    }
+
+    public void returnToMainManu() {
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     private void setSpawner() {
@@ -27,7 +31,7 @@ public class SimulationManager : MonoBehaviour {
         gui = new Gui();
         gui.initializeGui();
     }
-    public void initPupulation() {
+    private void initPupulation() {
         if (carPopulationList.Count == 0) {
             initializeNewPopulation();
         } else {
@@ -74,11 +78,7 @@ public class SimulationManager : MonoBehaviour {
     }
 
     private bool ifPopulationExists() {
-        if (countAliveUnits() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return countAliveUnits() > 0;
     }
 
     private int countAliveUnits() {
@@ -94,30 +94,19 @@ public class SimulationManager : MonoBehaviour {
 
     public void endSimulationIfCarsGetsToMeta() {
         bool isSimulationOver = false;
-        int howManyCarsEndedSimulation = 0;
         foreach (Car car in carPopulationList) {
             if (car.finishSimulation) {
-                Debug.Log(car + "Skończył wyścig!");
                 isSimulationOver = true;
-                howManyCarsEndedSimulation++;
             }
         }
         if (isSimulationOver) {
-            ParametersDto.setDuration(gui.getTime());
+            setParamsInDto();
             SceneManager.LoadScene("EndSimulationScene");
-            new FileManager().writeScoreToFile(prepareDataToSave(howManyCarsEndedSimulation));
         }
-    }
+    } 
 
-    private DataForTxt prepareDataToSave(int howManyCarsEndedRace) {
-        return DataForTxtBuilder.get()
-            .withGenerationNumber(ParametersDto.getGenerationNumber())
-            .withNumberOfFinishingCar(howManyCarsEndedRace)
-            .withPopulationSize(ParametersDto.getPopulationSize())
-            .withMutationChance(ParametersDto.getMutationChance())
-            .withMutationStrength(ParametersDto.getMutationStrength())
-            .withDuration(ParametersDto.getDuration())
-            .createNewDataForTxt();
+    private void setParamsInDto() {
+        ParametersDto.setDuration(gui.getTime());
     }
 
     private void initializeCars(List<Car> carList) {

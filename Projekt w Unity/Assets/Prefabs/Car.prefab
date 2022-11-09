@@ -149,10 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784c014d32624c246954ec7ae9aa7b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collided: 0
+  eliminated: 0
   finishSimulation: 0
-  lifeSpan: 5
-  manualSteering: 0
 --- !u!1001 &5842286085005393364
 PrefabInstance:
   m_ObjectHideFlags: 0

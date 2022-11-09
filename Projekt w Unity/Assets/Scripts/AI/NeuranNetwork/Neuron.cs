@@ -31,11 +31,9 @@ public class Neuron {
         return outcome;
     }
 
-    //oblicza sume iloczynów (wartosc neuronu z poprzedniej warstwy * waga polaczenia z tym neuronem)
     public float calculateWeights() {
         float sum = 0;
         foreach (Neuron neuron in weights.Keys) {
-            //mnozy wyjscie neuronu z waga
             sum += neuron.output * weights[neuron];
         }
         return sum;

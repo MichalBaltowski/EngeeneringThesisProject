@@ -28,6 +28,7 @@ public class Car : MonoBehaviour {
     private float timeRemaining;
 
     private bool manualSteering = ParametersDto.isManualSteering();
+    private LineRenderer lr;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -117,6 +118,7 @@ public class Car : MonoBehaviour {
 
             if (genericHit.collider == null) {
                 input[i] = sensorLineLenght;
+
                 Debug.DrawRay(genericSensorVector, genericDirection, Color.green);
 
             } else {

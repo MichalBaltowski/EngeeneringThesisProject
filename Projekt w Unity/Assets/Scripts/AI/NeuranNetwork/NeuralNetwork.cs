@@ -14,9 +14,7 @@ public class NeuralNetwork {
     }
 
     private void initializeWeights(List<NnLayer> layersList) {
-        //Neuron A ----waga---- Neuron B. Założyłem że waga będzie własnością neuronu b,
-        //dlatego iteruje od drugiej warstwy, ponieważ neurony w pierwszej nie posiadają wag
-        //do wartości wejściowych(input)
+        //Neuron A ----weight---- Neuron B. Weight is property in neuron B
         for (int i = 1; i < layersList.Count; i++) {
             foreach (Neuron neuronInPresentLayer in layersList[i].neuronsList) {
 
@@ -31,9 +29,6 @@ public class NeuralNetwork {
         }
     }
 
-    //inicjalizuje wszystkie warstwy
-    //twrzy obiekty o typie Nnlayer oraz obiekty o typie Neuron
-    //Nnlayer posiada kolekcje własnych neuronów.
     private List<NnLayer> initializeLayers(int[] layersArray) {
         List<NnLayer> layersList = new List<NnLayer>();
         for (int i = 0; i < layersArray.Length; i++) {
@@ -58,16 +53,11 @@ public class NeuralNetwork {
         }
     }
 
-    //oblicza przepływ danych w sieci
-    //zaczyna od 2 warstwy i zlicza sume iloczynow wag i wartosci neuronow w poprzedniej warstwie
-    //przepuszcza otrzymana sume przez funkcje aktywacji
-    //zapisuje wynik do wyjscia neuronu
     public float[] feedForward() {
         for (int i = 1; i < layersList.Count; i++) {
             foreach (Neuron neuron in layersList[i].neuronsList) {
                 float sum = neuron.calculateWeights();
-                neuron.output = neuron.activate(sum);
-                //Debug.Log("Obliczyłem output dla " + neuron.name + " jest rowne = " + neuron.output);
+                neuron.output = neuron.activate(sum);  
             }
         }
         return getNetworkOutput();
@@ -89,8 +79,6 @@ public class NeuralNetwork {
         }
     }
 
-    //wywołana na sieci X pobiera z niej kolekcje wag
-    //i zwraca je opakowane w nowy obiekt o typie NeuralNetworkData
     public NeuralNetworkData getNetworkData() {
         NeuralNetworkData data = new NeuralNetworkData();
         data.setWeights(copyWeightsFromNetwork());
@@ -101,12 +89,11 @@ public class NeuralNetwork {
         loadWeightsFromOtherNetwork(data.getWeights());
     }
 
-    //Kopiuje wartości wag z sieci i zwraca pod postacją zagnieżdżonej kolekcji 
-    //List<List<List<float>>> -> Lista warstw, każda warstwa zawiera listę neuronów, każdy neuron zawiera listę wartości wag o typie float
+
     private List<List<List<float>>> copyWeightsFromNetwork() {
         List<List<List<float>>> weights = new List<List<List<float>>>();
 
-        weights.Add(new List<List<float>>());//dodanie pustego rekordu za pierwszą warstwę sieci
+        weights.Add(new List<List<float>>());//Added empty record as a first network layer 
         for (int i = 1; i < layersList.Count; i++) {
             List<List<float>> subNeuronsList = new List<List<float>>();
             foreach (Neuron neuronInPresentLayer in layersList[i].neuronsList) {
@@ -123,7 +110,6 @@ public class NeuralNetwork {
         return weights;
     }
 
-    //Wywołana na sieci X ustawia na niej wartości wag przesłane w parametrze
     private void loadWeightsFromOtherNetwork(List<List<List<float>>> weights) {
         for (int i = 1; i < layersList.Count; i++) {
             for (int j = 0; j < layersList[i].neuronsList.Count; j++) {

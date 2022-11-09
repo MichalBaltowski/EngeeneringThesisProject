@@ -67,11 +67,13 @@ public class FileManager {
 
     private void addDataToFile(StreamWriter sw) {
         sw.WriteLine("2;Duration;" + dataToSave.getDuration());
-        sw.WriteLine("3;How many cars finished;" + dataToSave.getnumberOfFinishingCar());
-        sw.WriteLine("4;Generation;" + dataToSave.getGenerationNumber());
-        sw.WriteLine("5;Population Size;" + dataToSave.getPopulationSize());
-        sw.WriteLine("6;Mutation chance;" + dataToSave.getMutationChance());
-        sw.WriteLine("7;Mutation strength;" + dataToSave.getMutationStrength());
+        sw.WriteLine("3;Generation;" + dataToSave.getGenerationNumber());
+        sw.WriteLine("4;Population Size;" + dataToSave.getPopulationSize());
+        sw.WriteLine("5;Mutation chance;" + dataToSave.getMutationChance());
+        sw.WriteLine("6;Mutation strength;" + dataToSave.getMutationStrength());
+        sw.WriteLine("7;Car life span;" + dataToSave.getCarLifeSpan());
+        sw.WriteLine("8;Car sensor length;" + dataToSave.getCarSensorsLength());
+        sw.WriteLine("9;Manual steering;" + dataToSave.getCarSensorsLength());
     }
 
     private List<RankingData> deserializeRecords(String text) {
@@ -95,16 +97,16 @@ public class FileManager {
                     case 2:
                         duration = attribute[2];
                         break;
-                    case 4:
+                    case 3:
                         generation = Int16.Parse(attribute[2]);
                         break;
-                    case 5:
+                    case 4:
                         populationSize = Int16.Parse(attribute[2]);
                         break;
-                    case 6:
+                    case 5:
                         mutationChance = float.Parse(attribute[2]);
                         break;
-                    case 7:
+                    case 6:
                         mutationStrength = float.Parse(attribute[2]);
                         break;
                     default:

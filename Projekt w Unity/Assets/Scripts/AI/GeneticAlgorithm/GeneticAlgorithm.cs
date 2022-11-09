@@ -17,17 +17,16 @@ public class GeneticAlgorithm {
         copyNetworkFromPrevToNewGeneration(previousGenCarlist, nextGenCarList);
         mutate(nextGenCarList);
     }
-
-    private void sortCarListByFitnessValue(List<Car> unsortedCarList) {
-        unsortedCarList.Sort((x, y) => y.getFitnessValue().CompareTo(x.getFitnessValue()));
-    }
-
     private void eliminateCarsWithLowFitnessValue(List<Car> previousGenCarlist) {
         sortCarListByFitnessValue(previousGenCarlist);
         replaceWorstCarsWithBestCars(previousGenCarlist);
 
         sortCarListByFitnessValue(previousGenCarlist);
         multiplyBestCarGen(previousGenCarlist);
+    }
+
+    private void sortCarListByFitnessValue(List<Car> unsortedCarList) {
+        unsortedCarList.Sort((x, y) => y.getFitnessValue().CompareTo(x.getFitnessValue()));
     }
 
     // 40% populacji z najgorszym wynikiem fitness zostaje zast¹pionych przez 
@@ -40,6 +39,14 @@ public class GeneticAlgorithm {
             NeuralNetworkData dataFromBestCars = previousGenCarlist[i].network.getNetworkData();
             previousGenCarlist[lastIndex - i].network.loadNewNetworkData(dataFromBestCars);
             previousGenCarlist[lastIndex - i].setFitnessValue((int)previousGenCarlist[i].getFitnessValue());
+        }
+    }
+
+    private int setNumberOfBestCars(int listCarCount) {
+        if (listCarCount < 10) {
+            return 2;
+        } else {
+            return (int)(listCarCount * 0.4);
         }
     }
 
@@ -59,14 +66,6 @@ public class GeneticAlgorithm {
         for (int i = 0; i < previousGenCarlist.Count; i++) {
             NeuralNetworkData data = previousGenCarlist[i].network.getNetworkData();
             nextGenCarList[i].network.loadNewNetworkData(data);
-        }
-    }
-
-    private int setNumberOfBestCars(int listCarCount) {
-        if (listCarCount < 10) {
-            return 2;
-        } else {
-            return (int)(listCarCount * 0.4);
         }
     }
 

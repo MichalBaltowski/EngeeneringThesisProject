@@ -20,7 +20,7 @@ public class MainMenuMenager : MonoBehaviour
     }
 
     public void terminateProgram() {
-        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 
     private void setDefaultParameters() {

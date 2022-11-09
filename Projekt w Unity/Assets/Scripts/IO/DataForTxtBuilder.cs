@@ -1,11 +1,13 @@
 public sealed class DataForTxtBuilder
 {
     internal int generation;
-    internal int numberOfFinishingCar;
     internal int populationSize;
     internal float mutationChance;
     internal float mutationStrength;
     internal string duration;
+    internal int carLifeSpan;
+    internal float carSensorLength;
+    internal bool isManualSteering;
 
     private DataForTxtBuilder() {}
 
@@ -15,11 +17,6 @@ public sealed class DataForTxtBuilder
 
     public DataForTxtBuilder withGenerationNumber(int value) {
         this.generation = value;
-        return this;
-    }
-
-    public DataForTxtBuilder withNumberOfFinishingCar(int value) {
-        this.numberOfFinishingCar = value;
         return this;
     }
 
@@ -40,6 +37,21 @@ public sealed class DataForTxtBuilder
 
     public DataForTxtBuilder withDuration(string value) {
         this.duration = value;
+        return this;
+    }
+
+    public DataForTxtBuilder withCarLifeSpan(int value) {
+        this.carLifeSpan = value;
+        return this;
+    }
+
+    public DataForTxtBuilder withCarSensorLength(float value) {
+        this.carSensorLength = value;
+        return this;
+    }
+
+    public DataForTxtBuilder withManualSteering(bool value) {
+        this.isManualSteering = value;
         return this;
     }
 

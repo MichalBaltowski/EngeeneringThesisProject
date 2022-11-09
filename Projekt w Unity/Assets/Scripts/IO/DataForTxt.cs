@@ -1,23 +1,27 @@
 public sealed class DataForTxt {
     private int generation;
-    private int numberOfFinishingCar;
     private int populationSize;
     private float mutationChance;
     private float mutationStrength;
     private string duration;
+    private int carLifeSpan;
+    private float carSensorLength;
+    private bool isManualSteering;
 
     public DataForTxt(DataForTxtBuilder builder) {
+        duration = builder.duration;
         generation = builder.generation;
-        numberOfFinishingCar = builder.numberOfFinishingCar;
         populationSize = builder.populationSize;
         mutationChance = builder.mutationChance;
         mutationStrength = builder.mutationStrength;
-        duration = builder.duration;
+        carLifeSpan = builder.carLifeSpan;
+        carSensorLength = builder.carSensorLength;
+        isManualSteering = builder.isManualSteering;
     }
 
-    public int getGenerationNumber() { return generation; }
+    public string getDuration() { return duration; }
 
-    public int getnumberOfFinishingCar() { return numberOfFinishingCar; }
+    public int getGenerationNumber() { return generation; }
 
     public int getPopulationSize() { return populationSize; }
 
@@ -25,6 +29,7 @@ public sealed class DataForTxt {
 
     public float getMutationStrength() { return mutationStrength; }
 
-    public string getDuration() { return duration; }
+    public int getCarLifeSpan() { return carLifeSpan; }
 
+    public float getCarSensorsLength() { return carSensorLength; }
 }

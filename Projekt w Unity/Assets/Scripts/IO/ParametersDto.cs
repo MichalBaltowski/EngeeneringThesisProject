@@ -6,11 +6,11 @@ static public class ParametersDto
     private static float mutationChance;
     private static float mutationStrength;
     private static int generationNumber;
-    private static int aliveUnitsNumber;
     private static string duration;
     private static int carLifeSpan;
     private static float carSensorsLength;
     private static bool manualSteering;
+    private static int aliveUnitsNumber;
 
     public static void setDefault() {
         ParametersDto.setPopulationSize(90);
@@ -35,12 +35,6 @@ static public class ParametersDto
     public static void setMutationStrength(float newValue) {
         if (newValue > 0.0 && newValue < 1) {
             mutationStrength = (float)Math.Round(newValue, 2);
-        }
-    }
-
-    public static void setGenerationNumber(int newValue) {
-        if(newValue > 1) {
-            generationNumber = newValue;
         }
     }
 
