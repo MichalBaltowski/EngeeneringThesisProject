@@ -7,6 +7,7 @@ The title of the engineering thesis is "*_Design and implementation of a genetic
 
 In my work, I develop a design and implementation of a racing car race application(repository includes only the application).
 The aim of the test is for at least one car to pass the entire tour without hitting any obstacles.
+>here are extended and improved version of the application which i used as an engineering thesis
 
 ## *How it's working?*
 
